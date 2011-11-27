@@ -47,6 +47,20 @@ namespace Scoretastic.Web.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Edit(CompetitionEditViewModel.ViewInput input)
+        {
+            return Execute(
+                action: () =>
+                {
+                    var competition = RavenSession.Load<Competition>(input.Id);
+                    competition = input.MapTo(competition);
+                    RavenSession.Store(competition);
+                },
+                onsuccess: () => RedirectToAction("Edit", new { id = input.Id }),
+                onfailure: () => ReturnRehydratedView(() => Edit(input.Id), input));
+        }
     }
 
     public class Competition

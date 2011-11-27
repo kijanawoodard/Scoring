@@ -25,7 +25,7 @@ namespace Scoretastic.Web.Infrastructure.AutoMapper
             return (TResult)Mapper.Map(self, self.GetType(), typeof(TResult));
         }
 
-		public static TResult MapPropertiesToInstance<TResult>(this object self, TResult value)
+		public static TResult MapTo<TResult>(this object self, TResult value)
 		{
             if (self == null)
                 throw new ArgumentNullException();
@@ -50,7 +50,8 @@ namespace Scoretastic.Web.Infrastructure.AutoMapper
                 .ForMember(x => x.Id, o => o.Ignore())
                 ;
 
-
+            Mapper.CreateMap<CompetitionEditViewModel.ViewInput, Competition>();
+            Mapper.CreateMap<Competition, CompetitionEditViewModel.ViewInput>();
         }
     }
 }
