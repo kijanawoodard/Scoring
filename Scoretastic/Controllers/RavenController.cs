@@ -2,7 +2,7 @@ using System;
 using System.Web.Mvc;
 using Raven.Client;
 
-namespace Scoretastic.Controllers
+namespace Scoretastic.Web.Controllers
 {
     //https://github.com/ayende/RaccoonBlog/blob/master/HibernatingRhinos.Loci.Common/Controllers/RavenController.cs
     public abstract class RavenController : Controller

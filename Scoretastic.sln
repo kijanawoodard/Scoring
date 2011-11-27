@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoretastic", "Scoretastic\Scoretastic.csproj", "{EDC0C7C0-6698-457F-8D37-EE307A044EEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoretastic.Web", "Scoretastic\Scoretastic.Web.csproj", "{EDC0C7C0-6698-457F-8D37-EE307A044EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoretastic.Tests", "Scoretastic.Tests\Scoretastic.Tests.csproj", "{77017FAD-4F22-4602-B270-87838377D995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoretastic.Testing.Integration", "Scoretastic.Tests\Scoretastic.Testing.Integration.csproj", "{77017FAD-4F22-4602-B270-87838377D995}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Scoretastic;
-using Scoretastic.Controllers;
+using Scoretastic.Web.Controllers;
 
 namespace Scoretastic.Tests.Controllers
 {

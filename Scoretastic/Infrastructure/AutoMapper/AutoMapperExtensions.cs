@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using AutoMapper;
-using Scoretastic.Controllers;
+using Scoretastic.Web.Controllers;
 
-namespace Scoretastic.Infrastructure.AutoMapper
+namespace Scoretastic.Web.Infrastructure.AutoMapper
 {
     //https://github.com/ayende/RaccoonBlog/blob/master/RaccoonBlog.Web/Infrastructure/AutoMapper/AutoMapperExtensions.cs
     public static class AutoMapperExtensions

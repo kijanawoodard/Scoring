@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Scoretastic.Infrastructure.AutoMapper;
+using Scoretastic.Web.Infrastructure.AutoMapper;
 
-namespace Scoretastic.Controllers
+namespace Scoretastic.Web.Controllers
 {
     public class CompetitionController : RavenController
     {
