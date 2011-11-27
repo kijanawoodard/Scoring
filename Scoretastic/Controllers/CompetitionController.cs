@@ -29,13 +29,13 @@ namespace Scoretastic.Web.Controllers
         public ActionResult Create(CompetitionCreateViewModel.ViewInput input, FormCollection form)
         {
             return Execute(
-                () =>
+                action: () =>
                     {
                         var competion = input.MapTo<Competition>();
                         RavenSession.Store(competion);
                     },
-                () => RedirectToAction("Index"),
-                () => ReturnRehydratedView(Create, input));
+                onsuccess: () => RedirectToAction("Index"),
+                onfailure: () => ReturnRehydratedView(Create, input));
         }
 
         
