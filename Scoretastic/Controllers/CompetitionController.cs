@@ -38,13 +38,15 @@ namespace Scoretastic.Web.Controllers
                 onfailure: () => ReturnRehydratedView(Create, input));
         }
 
-        
 
-    }
-    //make general error show up on page
-    public interface IViewModel<T>
-    {
-        T Input { get; set; }
+        public ActionResult Edit(string id)
+        {
+            var competition = RavenSession.Load<Competition>(id);
+            var model = new CompetitionEditViewModel();
+            model.Input = competition.MapTo<CompetitionEditViewModel.ViewInput>();
+
+            return View(model);
+        }
     }
 
     public class Competition
@@ -52,6 +54,24 @@ namespace Scoretastic.Web.Controllers
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+    }
+
+    
+    public class CompetitionEditViewModel : IViewModel<CompetitionEditViewModel.ViewInput>
+    {
+
+        public class ViewInput : CompetitionInput
+        {
+            public string Id { get; set; }
+        }
+
+        public ViewInput Input { get; set; }
+    }
+
+    //make general error show up on page
+    public interface IViewModel<T>
+    {
+        T Input { get; set; }
     }
 
     //create a bit of ceremony to test out some concepts that could be quite useful later
@@ -64,15 +84,17 @@ namespace Scoretastic.Web.Controllers
 
         public ViewInput Input { get; set; }
 
-        public class ViewInput
-        {
-            [Required]
-            public string Name { get; set; }
+        public class ViewInput : CompetitionInput { }
+    }
 
-            [Required]
-            [DataType(DataType.MultilineText)]
-            public string Description { get; set; }
-        }
+    public class CompetitionInput
+    {
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
     }
 
     public class CompetitionIndexViewModel

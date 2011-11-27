@@ -1,17 +1,18 @@
-﻿@using Scoretastic.Web.Controllers
-@model CompetitionCreateViewModel
+﻿@model Scoretastic.Web.Controllers.CompetitionEditViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create Competition</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Competition</legend>
+        <legend>CompetitionEditViewModel</legend>
 
+        @Html.HiddenFor(model => model.Input.Id)
+            
         <div class="editor-label">
             @Html.LabelFor(model => model.Input.Name)
         </div>
@@ -29,7 +30,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
