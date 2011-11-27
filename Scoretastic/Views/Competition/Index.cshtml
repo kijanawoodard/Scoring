@@ -1,0 +1,36 @@
+﻿@model Scoretastic.Controllers.CompetitionIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if (Model.Competitions.Any())
+{
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Tasks</th>
+        </tr>
+
+        @foreach (var competition in Model.Competitions)
+        {
+            <tr>
+                <td>@competition.Name</td>
+                <td>@competition.Description</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
+                    @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                    @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                </td>
+            </tr>
+        }
+
+    </table>
+}
