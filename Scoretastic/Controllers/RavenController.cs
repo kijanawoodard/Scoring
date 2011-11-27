@@ -50,6 +50,25 @@ namespace Scoretastic.Web.Controllers
             return result;
         }
 
+        protected ActionResult Execute(Action action, Func<ActionResult> onsuccess, Func<ActionResult> onfailure)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    action();
+                    return onsuccess();
+                }
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "An unexpected error occurred and has been logged. Please try again later" + e.Message);
+                //TODO: Make the above assertion true
+            }
+
+            return onfailure();
+        }
+
         protected void CompleteSessionHandler(ActionExecutedContext filterContext)
         {
             using (RavenSession)
