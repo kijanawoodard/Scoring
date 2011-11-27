@@ -31,7 +31,7 @@ namespace Scoretastic.Controllers
         public ActionResult Create(CompetitionCreateViewModel.ViewInput input, FormCollection form)
         {
             if (!ModelState.IsValid)
-                return ReturnReHydratedView(Create, input);
+                return ReturnRehydratedView(Create, input);
 
             var competion = input.MapTo<Competition>();
             RavenSession.Store(competion);

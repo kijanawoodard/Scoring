@@ -36,7 +36,7 @@ namespace Scoretastic.Controllers
             CompleteSessionHandler(filterContext);
         }
 
-        protected ActionResult ReturnReHydratedView<T>(Func<ActionResult> action, T input) where T : class
+        protected ActionResult ReturnRehydratedView<T>(Func<ActionResult> action, T input) where T : class
         {
             var result = action();
             var view = result as ViewResult;
