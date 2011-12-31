@@ -48,7 +48,7 @@ namespace Scoretastic.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPut]
         public ActionResult Edit(CompetitionEditViewModel.ViewInput input)
         {
             return Execute(
@@ -82,7 +82,6 @@ namespace Scoretastic.Web.Controllers
         public ViewInput Input { get; set; }
     }
 
-    //make general error show up on page
     public interface IViewModel<T>
     {
         T Input { get; set; }

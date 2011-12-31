@@ -7,6 +7,7 @@
 <h2>Edit</h2>
 
 @using (Html.BeginForm()) {
+    @Html.HttpMethodOverride(HttpVerbs.Put)
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>CompetitionEditViewModel</legend>
