@@ -1,0 +1,4 @@
+﻿@model DateTime?
+
+@(Model.HasValue ? Model.Value.ToString("MM/dd/yyyy") : string.Empty)
+
