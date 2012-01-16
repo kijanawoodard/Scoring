@@ -29,6 +29,22 @@
             @Html.EditorFor(model => model.Input.Description)
             @Html.ValidationMessageFor(model => model.Input.Description)
         </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Input.FirstDay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Input.FirstDay)
+            @Html.ValidationMessageFor(model => model.Input.FirstDay)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Input.LastDay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Input.LastDay)
+            @Html.ValidationMessageFor(model => model.Input.LastDay)
+        </div>
 
         <p>
             <input type="submit" value="Save" />

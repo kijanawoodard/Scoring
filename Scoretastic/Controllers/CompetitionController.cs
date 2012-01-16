@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,7 +15,11 @@ namespace Scoretastic.Web.Controllers
                                 .OrderBy(x => x.Name);
 
             var model = new CompetitionIndexViewModel(competitions);
-            return View(model);
+
+            if (ControllerContext.IsChildAction)
+                return PartialView(model);
+            else
+                return View(model);
         }
 
 
@@ -61,6 +66,22 @@ namespace Scoretastic.Web.Controllers
                 onsuccess: () => RedirectToAction("Edit", new { id = input.Id }),
                 onfailure: () => ReturnRehydratedView(() => Edit(input.Id), input));
         }
+
+        public ActionResult Details(string id)
+        {
+            var competition = RavenSession.Load<Competition>(id);
+            var model = new CompetitionDetailsViewModel(competition);
+
+            return View();
+        }
+    }
+
+    public class CompetitionDetailsViewModel
+    {
+        public CompetitionDetailsViewModel(Competition competition)
+        {
+            
+        }
     }
 
     public class Competition
@@ -68,9 +89,10 @@ namespace Scoretastic.Web.Controllers
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public DateTime FirstDay { get; set; }
+        public DateTime LastDay { get; set; }
     }
 
-    
     public class CompetitionEditViewModel : IViewModel<CompetitionEditViewModel.ViewInput>
     {
 
@@ -108,6 +130,12 @@ namespace Scoretastic.Web.Controllers
         [Required]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        [Required]
+        public DateTime FirstDay { get; set; }
+        
+        [Required]
+        public DateTime LastDay { get; set; }
     }
 
     public class CompetitionIndexViewModel

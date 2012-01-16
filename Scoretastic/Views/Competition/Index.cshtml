@@ -4,17 +4,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Competitions</h2>
 
 @if (Model.Competitions.Any())
 {
     <table>
         <tr>
+            <th>Date</th>
             <th>Name</th>
             <th>Description</th>
             <th>Tasks</th>
@@ -23,6 +19,7 @@
         @foreach (var competition in Model.Competitions)
         {
             <tr>
+                <td>@Html.DisplayFor(model => competition.FirstDay) - @Html.DisplayFor(model => competition.LastDay)</td>
                 <td>@competition.Name</td>
                 <td>@competition.Description</td>
                 <td>
@@ -35,3 +32,8 @@
 
     </table>
 }
+
+<p>
+    @Html.ActionLink("Create A New Competition", "Create")
+</p>
+
