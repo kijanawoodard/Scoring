@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Routing;
 using Raven.Client.Document;
 using Scoretastic.Web.Controllers;
@@ -39,7 +40,7 @@ namespace Scoretastic.Web
 
             RavenController.DocumentStore = new DocumentStore
             {
-                Url = "http://localhost:8080"
+                Url = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"]
             }.Initialize();
         }
     }
