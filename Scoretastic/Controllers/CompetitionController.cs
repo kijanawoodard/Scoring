@@ -26,6 +26,7 @@ namespace Scoretastic.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            //hmmmm
             var model = new CompetitionCreateViewModel();
             return View(model);
         }
