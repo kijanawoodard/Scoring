@@ -38,9 +38,9 @@ namespace Scoretastic.Web
 
             AutoMapperConfiguration.Configure();
 
-            RavenController.DocumentStore = new DocumentStore
+            RavenController.DocumentStore = new DocumentStore()
             {
-                Url = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"]
+                Url = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"].Replace("Url=", "")
             }.Initialize();
         }
     }
