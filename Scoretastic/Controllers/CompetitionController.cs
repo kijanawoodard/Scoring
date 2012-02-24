@@ -13,13 +13,11 @@ namespace Scoretastic.Web.Controllers
         public ActionResult Index()
         {
             var competitions = RavenSession.Query<Competition>()
-            //                    .ToList()
+                                .ToList()
                                 .OrderBy(x => x.Name);
 
-//            var competitions = Enumerable.Empty<Competition>();
             var model = new CompetitionIndexViewModel(competitions);
-
-            ViewBag.RavenDB = ConfigurationManager.ConnectionStrings["RavenDB"];
+            dsds
             if (ControllerContext.IsChildAction)
                 return PartialView(model);
             else
