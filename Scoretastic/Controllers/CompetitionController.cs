@@ -17,7 +17,7 @@ namespace Scoretastic.Web.Controllers
                                 .OrderBy(x => x.Name);
 
             var model = new CompetitionIndexViewModel(competitions);
-            dsds
+
             if (ControllerContext.IsChildAction)
                 return PartialView(model);
             else
