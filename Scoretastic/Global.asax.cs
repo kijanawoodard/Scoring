@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Raven.Abstractions.Data;
 using Raven.Client.Document;
 using Scoretastic.Web.Controllers;
 using Scoretastic.Web.Infrastructure.AutoMapper;
@@ -38,9 +39,13 @@ namespace Scoretastic.Web
 
             AutoMapperConfiguration.Configure();
 
+            var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenDB");
+            parser.Parse();
+
             RavenController.DocumentStore = new DocumentStore()
             {
-                Url = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"].Replace("Url=", "")
+                ApiKey = parser.ConnectionStringOptions.ApiKey,
+                Url = parser.ConnectionStringOptions.Url
             }.Initialize();
         }
     }
