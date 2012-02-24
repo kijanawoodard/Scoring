@@ -64,6 +64,7 @@ namespace Scoretastic.Web.Controllers
             {
                 ModelState.AddModelError("", "An unexpected error occurred and has been logged. Please try again later" + e.Message);
                 //TODO: Make the above assertion true
+                throw;
             }
 
             return onfailure();
