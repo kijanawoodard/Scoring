@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using Scoretastic.Web.Infrastructure.AutoMapper;
@@ -11,12 +12,13 @@ namespace Scoretastic.Web.Controllers
     {
         public ActionResult Index()
         {
-            var competitions = RavenSession.Query<Competition>()
-                                .OrderBy(x => x.Name);
+//            var competitions = RavenSession.Query<Competition>()
+//                                .OrderBy(x => x.Name);
 
-            //var competitions = Enumerable.Empty<Competition>();
+            var competitions = Enumerable.Empty<Competition>();
             var model = new CompetitionIndexViewModel(competitions);
 
+            ViewBag.RavenDB = ConfigurationManager.ConnectionStrings["RavenDB"];
             if (ControllerContext.IsChildAction)
                 return PartialView(model);
             else
