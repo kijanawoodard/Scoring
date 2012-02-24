@@ -13,7 +13,7 @@ namespace Scoretastic.Web.Controllers
         public ActionResult Index()
         {
             var competitions = RavenSession.Query<Competition>()
-                                .ToList()
+            //                    .ToList()
                                 .OrderBy(x => x.Name);
 
 //            var competitions = Enumerable.Empty<Competition>();
